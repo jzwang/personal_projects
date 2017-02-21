@@ -38,6 +38,9 @@ hist(attempts_until_success, breaks = 100, xlim = c(0,10),
      main = "Attempts untill first success",
      xlab = "Trials until first success") #xlim gives upper and lower bound
 
+
+
+
 ```
 
 BOX PLOTS
