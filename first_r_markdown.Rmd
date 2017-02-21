@@ -1,0 +1,79 @@
+---
+title: "Trial"
+author: "Jackson"
+date: "2/13/2017"
+output: html_document
+---
+
+
+```{r setup, include=FALSE}
+#dir() check to see which documents are in the current directory
+df <- read.csv("~/Documents/R/2in60_2.csv")
+summary(df)
+##df$first_successful_tilt_speed <- as.numeric(df$first_successful_tilt_speed)
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r setup, include=FALSE}
+# Load the package
+#install.packages("sqldf")
+library(sqldf)
+df2= sqldf("select * from df a join df b on a.tilter_id = b.tilter_id")
+```
+
+
+
+# distinct countries
+
+```{r cars}
+levels(df$tilter_country)
+```
+
+## Including Plots
+
+HISTOGRAMS
+
+```{r pressure, echo=FALSE}
+attempts_until_success <- as.numeric(df$attempts_until_first_success)
+hist(attempts_until_success, breaks = 100, xlim = c(0,10),
+     main = "Attempts untill first success",
+     xlab = "Trials until first success") #xlim gives upper and lower bound
+
+
+
+
+```
+
+BOX PLOTS
+
+```{r pressure, echo=FALSE}
+attempts_until_success <- as.numeric(df$attempts_until_first_success)
+boxplot(attempts_until_success,ylim=c(0,20),
+     main = "Attempts untill first success",
+     xlab = "Trials until first success") #xlim gives upper and lower bound
+
+```
+
+SCATTER PLOTS 
+
+```{r pressure, echo=FALSE}
+df
+attempts_until_success <- as.numeric(df$attempts_until_first_success)
+plot(df$contributors_first_tilt,df$signups_first_tilt, xlim = c(0,500), ylim=c(0,200),
+     main = "Contributors to First Tilt vs. Signups to First Tilt",
+     xlab = "contributors_first_tilt",
+    ylab= "signups_first_tilt")
+```
+
+
+INTERMEDIATE GRAPHING
+
+
+```{r pressure, echo=FALSE}
+df
+attempts_until_success <- as.numeric(df$attempts_until_first_success)
+plot(df$contributors_first_tilt,df$signups_first_tilt, xlim = c(0,500), ylim=c(0,200),
+     main = "Contributors to First Tilt vs. Signups to First Tilt",
+     xlab = "contributors_first_tilt",
+    ylab= "signups_first_tilt")
+points(df$contributors_first_tilt,df$signups_first_tilt,col=2, pch = 2)
+```
